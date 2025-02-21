@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Página en Netlify</title>
+</head>
+<body>
+    <script src="home/TRABAJO_HTML/CODIGO.js"></script>
+    <form>
+        <p>Enter an email address:</p>
+        <input id='email'>
+        <button type='submit' id='validate'>Validate!</button>
+    </form>
+    <h2 id='result'></h2>
+    </br>
+    <script>
+        // Widget de Conversor de Moneda
+        async function convertCurrency() {
+            const amount = document.getElementById("amount").value;
+            if (!amount) return;
+            const response = await fetch('https://api.exchangerate-api.com/v4/latest/USD');
+            const data = await response.json();
+            const rate = data.rates.EUR;
+            document.getElementById("result").innerText = `${amount} USD = ${(amount * rate).toFixed(2)} EUR`;
+        }
+    </script>
+</body>
+</html>
